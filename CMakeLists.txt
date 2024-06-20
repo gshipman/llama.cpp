@@ -336,6 +336,12 @@ if (LLAMA_BLAS)
 
         # Find NVPL BLAS
         find_package(nvpl REQUIRED COMPONENTS blas)
+        set(GGML_HEADERS_BLAS ggml-blas.h)
+        set(GGML_SOURCES_BLAS ggml-blas.cpp)
+        set(LLAMA_EXTRA_LIBS ${LLAMA_EXTRA_LIBS} nvpl::blas_${INT_TYPE}_${THR_TYPE})
+        add_compile_definitions(GGML_USE_BLAS)
+        add_compile_definitions(GGML_BLAS_USE_NVPL)
+
     else()
         set(BLA_VENDOR ${LLAMA_BLAS_VENDOR})
         find_package(BLAS)

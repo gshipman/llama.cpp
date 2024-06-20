@@ -8,6 +8,8 @@
 #   include <Accelerate/Accelerate.h>
 #elif defined(GGML_BLAS_USE_MKL)
 #   include <mkl.h>
+#elif defined(GGML_BLAS_USE_NVPL)
+#   include <nvpl_blas.h>
 #else
 #   include <cblas.h>
 #   ifdef BLIS_ENABLE_CBLAS
